@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Stats</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .stats-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      max-width: 360px;
+      background: #edfd9b;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+
+    ul {
+      list-style: none;
+      padding: 0;
+      font-size: 16px;
+      text-align: left;
+    }
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      margin: 8px 0;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 14px;
+      background-color: #f8b500;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #e09e00;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="game-container stats-container">
+    <h1>📊 Your Stats</h1>
+    <ul>
+      <li><strong>Total Games:</strong> <span id="statGames">0</span></li>
+      <li><strong>Wins:</strong> <span id="statWins">0</span></li>
+      <li><strong>Win %:</strong> <span id="statWinRate">0%</span></li>
+      <li><strong>Streak:</strong> <span id="statStreak">0</span></li>
+      <li><strong>Best Streak:</strong> <span id="statBestStreak">0</span></li>
+    </ul>
+    <button onclick="location.href='index.html'">← Back to Game</button>
+  </div>
+
+  <script>
+    function showStats() {
+      const stats = JSON.parse(localStorage.getItem("stats")) || {
+        games: 0,
+        wins: 0,
+        streak: 0,
+        bestStreak: 0
+      };
+
+      const winRate = stats.games > 0 ? Math.round((stats.wins / stats.games) * 100) : 0;
+
+      document.getElementById("statGames").textContent = stats.games;
+      document.getElementById("statWins").textContent = stats.wins;
+      document.getElementById("statWinRate").textContent = `${winRate}%`;
+      document.getElementById("statStreak").textContent = stats.streak;
+      document.getElementById("statBestStreak").textContent = stats.bestStreak;
+    }
+
+    showStats();
+  </script>
+</body>
+
+</html>

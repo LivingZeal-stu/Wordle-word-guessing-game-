@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <title>Wordle</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="game-container">
+    <h1>🧠 Word guessing game </h1>
+
+    <label for="modeSelect">Choose Word Length:</label>
+    <select id="modeSelect" onchange="startGame()">
+      <option value="4" selected>4-letter</option>
+      <option value="5">5-letter</option>
+    </select>
+
+    <p id="gameInfo"></p>
+
+    <input type="text" id="guessInput" placeholder="Enter your guess" />
+    <button onclick="submitGuess()">Guess</button>
+
+    <div id="feedback"></div>
+    <p id="attemptsLeft"></p>
+    <p id="scoreDisplay"></p>
+
+
+    <button onclick="startGame()" id="replay" style="display:none;">🔁 Play Again</button>
+    <br /><br />
+    <a href="stats.html" class="stats-link">📊 Show Stats</a>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
